@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>{{ libro.nombre_libro }}</h1>
+    <form action="{% url 'prestamo:prestando' libro.id %}" method="post">
+        {% csrf_token %}
+        <ul>
+        {% for al in libro.alumno_set.all %}
+            <li>
+                    {{ al.nombre_alumno }}
+            </li>
+        {% endfor %}
+        </ul>
+      Nuevo préstamo:<br>
+      Alumno <input type="text" name="alumno">
+      <input type="submit" value="prestar">
+    </form>
+    <br><a href="{% url 'prestamo:index' %}">Ver Libros</a>
+
+
+</body>
+</html>

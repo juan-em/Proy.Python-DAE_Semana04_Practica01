@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Lista para préstamos de libros</h1>
+    {% if libros %}
+    <ul>
+        {% for libro in libros %}
+            <li>
+                <a href="/prestamo/{{libro.id}}">
+                    {{libro.nombre_libro}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay libros :D</p>
+{% endif %}
+</body>
+</html>
